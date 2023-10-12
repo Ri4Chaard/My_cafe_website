@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./styles/nullstyle.css";
 import { DishList } from "./components/DishList";
+import { DishForm } from "./components/DishForm";
 
 function App() {
     const [dishType, setDishType] = useState("");
@@ -16,42 +17,17 @@ function App() {
     const dishesSet = new Set();
     dishes.map((el) => dishesSet.add(el.type));
 
-    const addNewDish = (e) => {
-        e.preventDefault();
-        const newDish = {
-            type: dishType,
-            name: dishName,
-        };
-        setDishes(
-            [...dishes, newDish]
-            // .sort((a, b) => a.type.localeCompare(b.type))
-        );
-        dishesSet.add(newDish.type);
-        console.log(dishes);
-        console.log(dishesSet);
-    };
-
     return (
         <div className="App">
-            <form>
-                <input
-                    value={dishType}
-                    onChange={(e) => setDishType(e.target.value)}
-                    type="input"
-                    placeholder="Введите блюдо"
-                />
-                <input
-                    value={dishName}
-                    onChange={(e) => setDishName(e.target.value)}
-                    type="input"
-                    placeholder="Введите название блюда"
-                />
-                <button type="submit" onClick={addNewDish}>
-                    Добавить
-                </button>
-            </form>
-            <div>{`The type is: ${dishType}. The name is: ${dishName}`}</div>
-
+            <DishForm
+                items={dishes}
+                set={dishesSet}
+                type={dishType}
+                name={dishName}
+                setType={setDishType}
+                setName={setDishName}
+                setItems={setDishes}
+            />
             <DishList set={dishesSet} items={dishes} />
         </div>
     );
