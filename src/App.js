@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./styles/nullstyle.css";
+import { DishList } from "./components/DishList";
 
 function App() {
     const [dishType, setDishType] = useState("");
@@ -51,23 +52,7 @@ function App() {
             </form>
             <div>{`The type is: ${dishType}. The name is: ${dishName}`}</div>
 
-            {Array.of(...dishesSet).map((dishType) => (
-                <div
-                    style={{
-                        border: "1px solid #000",
-                        marginTop: 15,
-                    }}
-                >
-                    <h1>{dishType}</h1>
-                    {dishes.map((dish) =>
-                        dish.type == dishType ? (
-                            <div>{dish.name}</div>
-                        ) : (
-                            <div></div>
-                        )
-                    )}
-                </div>
-            ))}
+            <DishList set={dishesSet} items={dishes} />
         </div>
     );
 }
