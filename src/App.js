@@ -8,27 +8,28 @@ function App() {
     const [dishName, setDishName] = useState("");
 
     const [dishes, setDishes] = useState([
-        { type: "Sushi", name: "Dragon" },
-        { type: "Sushi", name: "Japanese" },
-        { type: "Pizza", name: "Mozarella" },
-        { type: "Borzsh", name: "Zvichainiy" },
+        { id: Date.now(), type: "Sushi", name: "Dragon" },
+        { id: Date.now() + 1, type: "Sushi", name: "Japanese" },
+        { id: Date.now() + 2, type: "Pizza", name: "Mozarella" },
+        { id: Date.now() + 3, type: "Borzsh", name: "Zvichainiy" },
     ]);
 
     const dishesSet = new Set();
     dishes.map((el) => dishesSet.add(el.type));
 
+    const createDish = (newDish) => {
+        setDishes([...dishes, newDish]);
+        dishesSet.add(newDish.type);
+    };
+
+    const removeDish = (dish) => {
+        setDishes(dishes.filter((d) => d.id !== dish.id));
+    };
+
     return (
         <div className="App">
-            <DishForm
-                items={dishes}
-                set={dishesSet}
-                type={dishType}
-                name={dishName}
-                setType={setDishType}
-                setName={setDishName}
-                setItems={setDishes}
-            />
-            <DishList set={dishesSet} items={dishes} />
+            <DishForm create={createDish} />
+            <DishList set={dishesSet} items={dishes} remove={removeDish} />
         </div>
     );
 }

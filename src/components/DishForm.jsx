@@ -1,37 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { ExecuteButton } from "./UI/button/ExecuteButton.jsx";
 import { FormInput } from "./UI/input/FormInput.jsx";
 
-export const DishForm = (props) => {
-    // const [dish, setDishes] = useState([
-    //     { type: "Sushi", name: "Dragon" },
-    //     { type: "Sushi", name: "Japanese" },
-    //     { type: "Pizza", name: "Mozarella" },
-    //     { type: "Borzsh", name: "Zvichainiy" },
-    // ])
+export const DishForm = ({ create }) => {
+    const [dish, setDish] = useState({ type: "", name: "" });
 
     const addNewDish = (e) => {
         e.preventDefault();
         const newDish = {
-            type: props.type,
-            name: props.name,
+            ...dish,
+            id: Date.now(),
         };
-        props.setItems([...props.items, newDish]);
-        props.set.add(newDish.type);
+        create(newDish);
     };
 
     return (
         <div>
             <form>
                 <FormInput
-                    value={props.type}
-                    onChange={(e) => props.setType(e.target.value)}
+                    value={dish.type}
+                    onChange={(e) => setDish({ ...dish, type: e.target.value })}
                     type="input"
                     placeholder="Введите блюдо"
                 />
                 <FormInput
-                    value={props.name}
-                    onChange={(e) => props.setName(e.target.value)}
+                    value={dish.name}
+                    onChange={(e) => setDish({ ...dish, name: e.target.value })}
                     type="input"
                     placeholder="Введите название блюда"
                 />
@@ -39,7 +33,7 @@ export const DishForm = (props) => {
                     Добавить
                 </ExecuteButton>
             </form>
-            <div>{`The type is: ${props.type}. The name is: ${props.name}`}</div>
+            <div>{`The type is: ${dish.type}. The name is: ${dish.name}`}</div>
         </div>
     );
 };
