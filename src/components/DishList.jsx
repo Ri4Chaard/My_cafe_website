@@ -5,12 +5,7 @@ export const DishList = ({ set, items, remove }) => {
     return (
         <div>
             {Array.of(...set).map((type) => (
-                <div
-                    style={{
-                        border: "1px solid #000",
-                        marginTop: 15,
-                    }}
-                >
+                <div className="dish__list" key={type}>
                     <h1>{type}</h1>
                     <DishItems items={items} type={type} remove={remove} />
                 </div>

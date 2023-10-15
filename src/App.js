@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./styles/nullstyle.css";
+import "./styles/style.css";
 import { DishList } from "./components/DishList";
 import { DishForm } from "./components/DishForm";
 
@@ -28,8 +29,16 @@ function App() {
 
     return (
         <div className="App">
-            <DishForm create={createDish} />
-            <DishList set={dishesSet} items={dishes} remove={removeDish} />
+            <div className="container">
+                <div className="dish">
+                    <DishForm create={createDish} />
+                    <DishList
+                        set={dishesSet}
+                        items={dishes}
+                        remove={removeDish}
+                    />
+                </div>
+            </div>
         </div>
     );
 }

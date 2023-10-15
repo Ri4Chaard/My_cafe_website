@@ -16,7 +16,7 @@ export const DishForm = ({ create }) => {
 
     return (
         <div>
-            <form>
+            <form className="dish__form">
                 <FormInput
                     value={dish.type}
                     onChange={(e) => setDish({ ...dish, type: e.target.value })}
