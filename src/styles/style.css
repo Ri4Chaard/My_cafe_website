@@ -1,3 +1,7 @@
+body {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
 .App {
     display: flex;
     min-height: 100%;
@@ -55,6 +59,30 @@
 
 .dish__item img {
     object-fit: cover;
+    flex: 1 0 250px;
+    width: 250px;
+    height: 330px;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+}
+
+.dish__item_not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 0 auto;
+}
+
+.dish__item_not-found span {
+    margin: 0 0 50px 0;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.dish__item_not-found img {
+    object-fit: contain;
     flex: 1 0 250px;
     width: 250px;
     height: 330px;

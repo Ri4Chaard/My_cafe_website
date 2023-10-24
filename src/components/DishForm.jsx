@@ -5,6 +5,7 @@ import { FileInput } from "./UI/input/FileInput.jsx";
 
 export const DishForm = ({ create }) => {
     const [dish, setDish] = useState({ type: "", name: "", image: null });
+    const [checker, setChecker] = useState(false);
 
     const addNewDish = (e) => {
         e.preventDefault();
@@ -15,6 +16,7 @@ export const DishForm = ({ create }) => {
         create(newDish);
         console.log(newDish);
         setDish({ type: "", name: "", image: null });
+        setChecker(false);
     };
 
     return (
@@ -32,22 +34,17 @@ export const DishForm = ({ create }) => {
                     type="input"
                     placeholder="Введите название блюда"
                 />
-                {/* <label htmlFor="formId">Hallo</label>
-                <input
-                    type="file"
-                    accept=".png, .jpg"
-                    id="formId"
-                    onChange={(e) => {
-                        setDish({ ...dish, image: e.target.files[0] });
-                    }}
-                    style={{ display: "none" }}
-                /> */}
                 <FileInput
                     accept=".png, .jpg"
+                    checker={checker}
                     onChange={(e) => {
                         setDish({ ...dish, image: e.target.files[0] });
+                        if (e.target.files[0]) setChecker(true);
+                        else setChecker(false);
                     }}
-                />
+                >
+                    Выбрать картинку
+                </FileInput>
                 <ExecuteButton type="submit" onClick={addNewDish}>
                     Добавить
                 </ExecuteButton>
