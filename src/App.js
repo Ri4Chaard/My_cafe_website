@@ -9,10 +9,10 @@ function App() {
     const [dishName, setDishName] = useState("");
 
     const [dishes, setDishes] = useState([
-        { id: Date.now(), type: "Sushi", name: "Dragon" },
-        { id: Date.now() + 1, type: "Sushi", name: "Japanese" },
-        { id: Date.now() + 2, type: "Pizza", name: "Mozarella" },
-        { id: Date.now() + 3, type: "Borzsh", name: "Zvichainiy" },
+        { id: Date.now(), type: "Sushi", name: "Dragon", image: null },
+        { id: Date.now() + 1, type: "Sushi", name: "Japanese", image: null },
+        { id: Date.now() + 2, type: "Pizza", name: "Mozarella", image: null },
+        { id: Date.now() + 3, type: "Borzsh", name: "Zvichainiy", image: null },
     ]);
 
     const dishesSet = new Set();
