@@ -4,6 +4,7 @@ import "./styles/style.css";
 import { DishList } from "./components/DishList";
 import { DishForm } from "./components/DishForm";
 import { ExecuteButton } from "./components/UI/button/ExecuteButton";
+import { DishTypesFilter } from "./components/DishTypesFilter";
 
 function App() {
     // const [dishType, setDishType] = useState("");
@@ -33,12 +34,18 @@ function App() {
     const chooseDish = (e) => {
         if (!filter) {
             setFilter(e.target.value);
+            console.log(e.target.scrollWidth);
+            console.log(e.target.offsetLeft);
+            e.target.scrollIntoView({ inline: "center" });
             setActiveFilter(!isActiveFilter);
         }
         if (e.target.value == filter) {
             setActiveFilter(!isActiveFilter);
             setFilter("");
-        } else setFilter(e.target.value);
+        } else {
+            setFilter(e.target.value);
+            e.target.scrollIntoView({ inline: "center" });
+        }
     };
 
     const filterDishes = () => {
@@ -53,18 +60,11 @@ function App() {
             <div className="container">
                 <div className="dish">
                     <DishForm create={createDish} />
-                    {[...dishesSet].map((type) => {
-                        return (
-                            <button
-                                key={type}
-                                value={type}
-                                onClick={chooseDish}
-                                // className={isActiveFilter ? "active" : ""}
-                            >
-                                {type}
-                            </button>
-                        );
-                    })}
+                    <DishTypesFilter
+                        set={dishesSet}
+                        filter={filter}
+                        chooser={chooseDish}
+                    />
                     <DishList
                         set={filteredDishes}
                         items={dishes}

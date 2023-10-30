@@ -25,6 +25,15 @@ body {
     max-width: 500px;
 }
 
+.dish__filter {
+    display: flex;
+    max-width: 800px;
+    overflow-x: auto;
+    margin: 20px auto;
+    border-radius: 20px;
+    box-shadow: 0px 0px 2px #000;
+}
+
 .dish__list {
     display: flex;
     flex-direction: column;
