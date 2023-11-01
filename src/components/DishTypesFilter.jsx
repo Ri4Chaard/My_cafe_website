@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import classes from "./DishTypesFilter.module.css";
+import { FilterButton } from "./UI/button/filter_buttons/dish_type_buttons/FilterButton";
+import { ArrowButton } from "./UI/button/filter_buttons/arrow_buttons/ArrowButton";
 
 export const DishTypesFilter = ({ set, filter, chooser }) => {
     const [fixButtons, setFixButtons] = useState(false);
@@ -35,20 +36,7 @@ export const DishTypesFilter = ({ set, filter, chooser }) => {
             }
         >
             {fixButtons ? (
-                <button
-                    style={{
-                        fontSize: "18px",
-                        fontWeight: "bold",
-                        background: "#fff",
-                        boxShadow: "0px 0px 2px #000",
-                        borderRadius: "20px 0 0 20px",
-                        padding: "5px",
-                        margin: "0 10px 0 0",
-                    }}
-                    onClick={backward}
-                >
-                    &lt;&lt;
-                </button>
+                <ArrowButton onClick={backward}>left</ArrowButton>
             ) : null}
             <div
                 ref={ref}
@@ -65,41 +53,28 @@ export const DishTypesFilter = ({ set, filter, chooser }) => {
             >
                 {[...set].map((type) =>
                     filter == type ? (
-                        <button
-                            className={classes.filterBtn_active}
+                        <FilterButton
+                            active={true}
                             key={type}
                             value={type}
                             onClick={chooser}
                         >
                             {type}
-                        </button>
+                        </FilterButton>
                     ) : (
-                        <button
-                            className={classes.filterBtn}
+                        <FilterButton
+                            active={false}
                             key={type}
                             value={type}
                             onClick={chooser}
                         >
                             {type}
-                        </button>
+                        </FilterButton>
                     )
                 )}
             </div>
             {fixButtons ? (
-                <button
-                    style={{
-                        fontSize: "18px",
-                        fontWeight: "bold",
-                        background: "#fff",
-                        boxShadow: "0px 0px 2px #000",
-                        borderRadius: "0 20px 20px 0",
-                        padding: "5px",
-                        margin: "0 0 0 10px",
-                    }}
-                    onClick={forward}
-                >
-                    &gt;&gt;
-                </button>
+                <ArrowButton onClick={forward}>right</ArrowButton>
             ) : null}
         </div>
     );

@@ -1,0 +1,27 @@
+.arrBtn {
+    font-size: 18px;
+    font-weight: bold;
+    background: #fff;
+    box-shadow: 0px 0px 2px #000;
+    padding: 5px;
+    margin: 0 10px;
+}
+.arrBtn_left {
+    font-size: 18px;
+    font-weight: bold;
+    background: #fff;
+    box-shadow: 0px 0px 2px #000;
+    border-radius: 20px 0 0 20px;
+    padding: 5px;
+    margin: 0 10px 0 0;
+}
+
+.arrBtn_right {
+    font-size: 18px;
+    font-weight: bold;
+    background: #fff;
+    box-shadow: 0px 0px 2px #000;
+    border-radius: 0 20px 20px 0;
+    padding: 5px;
+    margin: 0 0 0 10px;
+}
