@@ -36,7 +36,7 @@ function App() {
             setFilter(e.target.value);
             console.log(e.target.scrollWidth);
             console.log(e.target.offsetLeft);
-            e.target.scrollIntoView({ inline: "center" });
+            e.target.scrollIntoView({ behavior: "smooth", inline: "center" });
             setActiveFilter(!isActiveFilter);
         }
         if (e.target.value == filter) {
@@ -44,7 +44,7 @@ function App() {
             setFilter("");
         } else {
             setFilter(e.target.value);
-            e.target.scrollIntoView({ inline: "center" });
+            e.target.scrollIntoView({ behavior: "smooth", inline: "center" });
         }
     };
 

@@ -14,37 +14,93 @@ export const DishTypesFilter = ({ set, filter, chooser }) => {
 
     console.log(ref);
 
+    const backward = () => {
+        ref.current.scrollLeft -= ref.current.scrollWidth / [...set].length;
+    };
+
+    const forward = () => {
+        ref.current.scrollLeft += ref.current.scrollWidth / [...set].length;
+    };
+
     return (
         <div
-            ref={ref}
-            className="dish__filter"
             style={
                 fixButtons
-                    ? { justifyContent: "flex-start" }
-                    : { justifyContent: "space-around" }
+                    ? {
+                          display: "flex",
+                          justifyContent: "center",
+                          margin: "20px 0",
+                      }
+                    : {}
             }
         >
-            {[...set].map((type) =>
-                filter == type ? (
-                    <button
-                        className={classes.filterBtn_active}
-                        key={type}
-                        value={type}
-                        onClick={chooser}
-                    >
-                        {type}
-                    </button>
-                ) : (
-                    <button
-                        className={classes.filterBtn}
-                        key={type}
-                        value={type}
-                        onClick={chooser}
-                    >
-                        {type}
-                    </button>
-                )
-            )}
+            {fixButtons ? (
+                <button
+                    style={{
+                        fontSize: "18px",
+                        fontWeight: "bold",
+                        background: "#fff",
+                        boxShadow: "0px 0px 2px #000",
+                        borderRadius: "20px 0 0 20px",
+                        padding: "5px",
+                        margin: "0 10px 0 0",
+                    }}
+                    onClick={backward}
+                >
+                    &lt;&lt;
+                </button>
+            ) : null}
+            <div
+                ref={ref}
+                className="dish__filter"
+                style={
+                    fixButtons
+                        ? { justifyContent: "flex-start" }
+                        : {
+                              justifyContent: "space-around",
+                              borderRadius: "20px",
+                              margin: "20px auto",
+                          }
+                }
+            >
+                {[...set].map((type) =>
+                    filter == type ? (
+                        <button
+                            className={classes.filterBtn_active}
+                            key={type}
+                            value={type}
+                            onClick={chooser}
+                        >
+                            {type}
+                        </button>
+                    ) : (
+                        <button
+                            className={classes.filterBtn}
+                            key={type}
+                            value={type}
+                            onClick={chooser}
+                        >
+                            {type}
+                        </button>
+                    )
+                )}
+            </div>
+            {fixButtons ? (
+                <button
+                    style={{
+                        fontSize: "18px",
+                        fontWeight: "bold",
+                        background: "#fff",
+                        boxShadow: "0px 0px 2px #000",
+                        borderRadius: "0 20px 20px 0",
+                        padding: "5px",
+                        margin: "0 0 0 10px",
+                    }}
+                    onClick={forward}
+                >
+                    &gt;&gt;
+                </button>
+            ) : null}
         </div>
     );
 };
