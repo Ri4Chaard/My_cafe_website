@@ -4,7 +4,20 @@ import { ArrowButton } from "./UI/button/filter_buttons/arrow_buttons/ArrowButto
 
 export const DishTypesFilter = ({ set, filter, chooser }) => {
     const [fixButtons, setFixButtons] = useState(false);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const ref = useRef(0);
+
+    useEffect(() => {
+        function handleWindowResize() {
+            setWindowWidth(window.innerWidth);
+        }
+        window.addEventListener("resize", handleWindowResize);
+        handleWindowResize();
+        console.log("newUseEffect");
+        return () => {
+            window.removeEventListener("resize", handleWindowResize);
+        };
+    }, []);
 
     useEffect(() => {
         console.log("worked");
@@ -12,8 +25,6 @@ export const DishTypesFilter = ({ set, filter, chooser }) => {
             setFixButtons(true);
         else setFixButtons(false);
     }, [[...set].length]);
-
-    console.log(ref);
 
     const backward = () => {
         ref.current.scrollLeft -= ref.current.scrollWidth / [...set].length;
@@ -26,23 +37,23 @@ export const DishTypesFilter = ({ set, filter, chooser }) => {
     return (
         <div
             style={
-                fixButtons
+                fixButtons && windowWidth > 482
                     ? {
                           display: "flex",
                           justifyContent: "center",
                           margin: "20px 0",
                       }
-                    : {}
+                    : null
             }
         >
-            {fixButtons ? (
+            {fixButtons && windowWidth > 482 ? (
                 <ArrowButton onClick={backward}>left</ArrowButton>
             ) : null}
             <div
                 ref={ref}
                 className="dish__filter"
                 style={
-                    fixButtons
+                    fixButtons && windowWidth > 482
                         ? { justifyContent: "flex-start" }
                         : {
                               justifyContent: "space-around",
@@ -73,7 +84,7 @@ export const DishTypesFilter = ({ set, filter, chooser }) => {
                     )
                 )}
             </div>
-            {fixButtons ? (
+            {fixButtons && windowWidth > 482 ? (
                 <ArrowButton onClick={forward}>right</ArrowButton>
             ) : null}
         </div>
