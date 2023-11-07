@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./styles/nullstyle.css";
 import "./styles/style.css";
 import { DishList } from "./components/DishList";
 import { DishForm } from "./components/DishForm";
-import { ExecuteButton } from "./components/UI/button/ExecuteButton";
 import { DishTypesFilter } from "./components/DishTypesFilter";
 
 function App() {
-    // const [dishType, setDishType] = useState("");
-    // const [dishName, setDishName] = useState("");
-
     const [dishes, setDishes] = useState([
         { id: Date.now(), type: "Sushi", name: "Dragon", image: null },
         { id: Date.now() + 1, type: "Sushi", name: "Japanese", image: null },
@@ -34,8 +30,6 @@ function App() {
     const chooseDish = (e) => {
         if (!filter) {
             setFilter(e.target.value);
-            console.log(e.target.scrollWidth);
-            console.log(e.target.offsetLeft);
             e.target.scrollIntoView({ behavior: "smooth", inline: "center" });
             setActiveFilter(!isActiveFilter);
         }

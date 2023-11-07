@@ -13,14 +13,12 @@ export const DishTypesFilter = ({ set, filter, chooser }) => {
         }
         window.addEventListener("resize", handleWindowResize);
         handleWindowResize();
-        console.log("newUseEffect");
         return () => {
             window.removeEventListener("resize", handleWindowResize);
         };
     }, []);
 
     useEffect(() => {
-        console.log("worked");
         if (ref.current.scrollWidth > ref.current.offsetWidth)
             setFixButtons(true);
         else setFixButtons(false);
