@@ -49,7 +49,6 @@ export const DishForm = ({ create }) => {
                     Добавить
                 </ExecuteButton>
             </form>
-            <div>{`The type is: ${dish.type}. The name is: ${dish.name}`}</div>
         </div>
     );
 };
