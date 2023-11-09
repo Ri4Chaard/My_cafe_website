@@ -30,7 +30,7 @@ function App() {
     const chooseDish = (e) => {
         if (!filter) {
             setFilter(e.target.value);
-            e.target.scrollIntoView({ behavior: "smooth", inline: "center" });
+            e.target.scrollIntoView({ inline: "center" });
             setActiveFilter(!isActiveFilter);
         }
         if (e.target.value == filter) {
@@ -38,7 +38,7 @@ function App() {
             setFilter("");
         } else {
             setFilter(e.target.value);
-            e.target.scrollIntoView({ behavior: "smooth", inline: "center" });
+            e.target.scrollIntoView({ inline: "center" });
         }
     };
 
