@@ -1,72 +1,50 @@
 import React, { useState } from "react";
-import "./styles/nullstyle.css";
-import "./styles/style.css";
+// import "./styles/nullstyle.css";
+// import "./styles/style.css";
+import "./styles/App.css";
 import { DishList } from "./components/DishList";
 import { DishForm } from "./components/DishForm";
 import { DishTypesFilter } from "./components/DishTypesFilter";
+import { BrowserRouter, Link, Navigate, Route, Routes } from "react-router-dom";
+import Menu from "./pages/Menu";
+import { About } from "./pages/About";
+import { Container } from "./components/UI/container/Container";
 
 function App() {
-    const [dishes, setDishes] = useState([
-        { id: Date.now(), type: "Sushi", name: "Dragon", image: null },
-        { id: Date.now() + 1, type: "Sushi", name: "Japanese", image: null },
-        { id: Date.now() + 2, type: "Pizza", name: "Mozarella", image: null },
-        { id: Date.now() + 3, type: "Borzsh", name: "Zvichainiy", image: null },
-    ]);
-    const [filter, setFilter] = useState("");
-    const [isActiveFilter, setActiveFilter] = useState(false);
-
-    const dishesSet = new Set();
-    dishes.map((el) => dishesSet.add(el.type));
-
-    const createDish = (newDish) => {
-        setDishes([...dishes, newDish]);
-        dishesSet.add(newDish.type);
-    };
-
-    const removeDish = (dish) => {
-        setDishes(dishes.filter((d) => d.id !== dish.id));
-    };
-
-    const chooseDish = (e) => {
-        if (!filter) {
-            setFilter(e.target.value);
-            e.target.scrollIntoView({ inline: "center" });
-            setActiveFilter(!isActiveFilter);
-        }
-        if (e.target.value == filter) {
-            setActiveFilter(!isActiveFilter);
-            setFilter("");
-        } else {
-            setFilter(e.target.value);
-            e.target.scrollIntoView({ inline: "center" });
-        }
-    };
-
-    const filterDishes = () => {
-        if (isActiveFilter) return [filter];
-        else return dishesSet;
-    };
-
-    const filteredDishes = filterDishes();
-
     return (
-        <div className="App">
-            <div className="container">
-                <div className="dish">
-                    <DishForm create={createDish} />
-                    <DishTypesFilter
-                        set={dishesSet}
-                        filter={filter}
-                        chooser={chooseDish}
-                    />
-                    <DishList
-                        set={filteredDishes}
-                        items={dishes}
-                        remove={removeDish}
-                    />
-                </div>
-            </div>
-        </div>
+        <BrowserRouter>
+            <header className="header">
+                <Container>
+                    <div className="header__items">
+                        <div style={{ fontSize: "36px", color: "#fff" }}>
+                            LOGO HERE
+                        </div>
+                        <Link
+                            to="/menu"
+                            style={{ color: "#fff", fontSize: "24px" }}
+                        >
+                            Меню
+                        </Link>
+                        <Link
+                            to="/about"
+                            style={{ color: "#fff", fontSize: "24px" }}
+                        >
+                            О сайте
+                        </Link>
+                    </div>
+                </Container>
+            </header>
+            <Routes>
+                <Route path="/menu" element={<Menu />} />
+                <Route path="/about" element={<About />} />
+                <Route path="*" element={<Navigate to="/menu" replace />} />
+            </Routes>
+            <footer className="footer">
+                <Container>
+                    <div className="footer__items"></div>
+                </Container>
+            </footer>
+        </BrowserRouter>
     );
 }
 
