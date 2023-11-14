@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FilterButton } from "./UI/button/filter_buttons/dish_type_buttons/FilterButton";
 import { ArrowButton } from "./UI/button/filter_buttons/arrow_buttons/ArrowButton";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 export const DishTypesFilter = ({ set, filter, chooser }) => {
     const [fixButtons, setFixButtons] = useState(false);
@@ -13,18 +14,16 @@ export const DishTypesFilter = ({ set, filter, chooser }) => {
         }
         window.addEventListener("resize", handleWindowResize);
         handleWindowResize();
-        console.log("newUseEffect");
         return () => {
             window.removeEventListener("resize", handleWindowResize);
         };
     }, []);
 
     useEffect(() => {
-        console.log("worked");
         if (ref.current.scrollWidth > ref.current.offsetWidth)
             setFixButtons(true);
         else setFixButtons(false);
-    }, [[...set].length]);
+    }, [windowWidth, [...set].length]);
 
     const backward = () => {
         ref.current.scrollLeft -= ref.current.scrollWidth / [...set].length;
@@ -62,27 +61,41 @@ export const DishTypesFilter = ({ set, filter, chooser }) => {
                           }
                 }
             >
-                {[...set].map((type) =>
-                    filter == type ? (
-                        <FilterButton
-                            active={true}
-                            key={type}
-                            value={type}
-                            onClick={chooser}
-                        >
-                            {type}
-                        </FilterButton>
-                    ) : (
-                        <FilterButton
-                            active={false}
-                            key={type}
-                            value={type}
-                            onClick={chooser}
-                        >
-                            {type}
-                        </FilterButton>
-                    )
-                )}
+                <TransitionGroup component={null}>
+                    {[...set].map((type) =>
+                        filter == type ? (
+                            <CSSTransition
+                                key={type}
+                                timeout={500}
+                                classNames="list"
+                            >
+                                <FilterButton
+                                    active={true}
+                                    key={type}
+                                    value={type}
+                                    onClick={chooser}
+                                >
+                                    {type}
+                                </FilterButton>
+                            </CSSTransition>
+                        ) : (
+                            <CSSTransition
+                                key={type}
+                                timeout={500}
+                                classNames="list"
+                            >
+                                <FilterButton
+                                    active={false}
+                                    key={type}
+                                    value={type}
+                                    onClick={chooser}
+                                >
+                                    {type}
+                                </FilterButton>
+                            </CSSTransition>
+                        )
+                    )}
+                </TransitionGroup>
             </div>
             {fixButtons && windowWidth > 482 ? (
                 <ArrowButton onClick={forward}>right</ArrowButton>
