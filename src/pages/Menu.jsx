@@ -5,6 +5,8 @@ import { DishList } from "../components/DishList";
 import { DishForm } from "../components/DishForm";
 import { DishTypesFilter } from "../components/DishTypesFilter";
 import { Container } from "../components/UI/container/Container";
+import { Modal } from "../components/UI/Modal/Modal";
+import { ExecuteButton } from "../components/UI/button/ExecuteButton";
 
 function Menu() {
     const [dishes, setDishes] = useState([
@@ -15,6 +17,8 @@ function Menu() {
     ]);
     const [filter, setFilter] = useState("");
     const [isActiveFilter, setActiveFilter] = useState(false);
+    const [modalForm, setModalForm] = useState(false);
+    const [modalDish, setModalDish] = useState(false);
 
     const dishesSet = new Set();
     dishes.map((el) => dishesSet.add(el.type));
@@ -22,6 +26,11 @@ function Menu() {
     const createDish = (newDish) => {
         setDishes([...dishes, newDish]);
         dishesSet.add(newDish.type);
+        setModalForm(!modalForm);
+    };
+
+    const viewDish = (dish) => {
+        console.log(dish);
     };
 
     const removeDish = (dish) => {
@@ -54,7 +63,9 @@ function Menu() {
         <main className="content">
             <Container>
                 <div className="dish">
-                    <DishForm create={createDish} />
+                    <ExecuteButton onClick={() => setModalForm(!modalForm)}>
+                        Добавить блюдо +
+                    </ExecuteButton>
                     <DishTypesFilter
                         set={dishesSet}
                         filter={filter}
@@ -63,10 +74,15 @@ function Menu() {
                     <DishList
                         set={filteredDishes}
                         items={dishes}
+                        view={viewDish}
                         remove={removeDish}
                     />
                 </div>
             </Container>
+            <Modal visible={modalForm} setVisible={setModalForm}>
+                <DishForm create={createDish} />
+            </Modal>
+            <Modal visible={modalDish} setVisible={setModalDish}></Modal>
         </main>
     );
 }

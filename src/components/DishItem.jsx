@@ -17,7 +17,9 @@ export const DishItem = (props) => {
                     <span>Image not found</span>
                 </div>
             )}
-            <ExecuteButton>Просмотреть</ExecuteButton>
+            <ExecuteButton onClick={() => props.view(props.el)}>
+                Просмотреть
+            </ExecuteButton>
             <ExecuteButton onClick={() => props.remove(props.el)}>
                 Удалить
             </ExecuteButton>
