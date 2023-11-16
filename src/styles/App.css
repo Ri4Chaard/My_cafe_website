@@ -1,5 +1,6 @@
 body {
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    /* font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; */
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     background: url(../img/body_bg.jpg) repeat;
 }
 
@@ -11,7 +12,9 @@ body {
 }
 
 .header {
-    background-color: rgb(82, 82, 82);
+    /* background-color: rgb(82, 82, 82); */
+    background: url(../img/h&f_bg.jpg);
+    background-size: 250px;
 }
 
 .header__items {
@@ -22,7 +25,9 @@ body {
 }
 
 .footer {
-    background-color: rgb(82, 82, 82);
+    /* background-color: rgb(82, 82, 82); */
+    background: url(../img/h&f_bg.jpg);
+    background-size: 250px;
 }
 
 .footer__items {

@@ -16,20 +16,59 @@ function App() {
             <header className="header">
                 <Container>
                     <div className="header__items">
-                        <div style={{ fontSize: "36px", color: "#fff" }}>
+                        <div
+                            style={{
+                                fontSize: "36px",
+                                color: "#fff",
+                                padding: "5px",
+                                backgroundColor: "#333333",
+                            }}
+                        >
                             LOGO HERE
                         </div>
                         <Link
                             to="/menu"
-                            style={{ color: "#fff", fontSize: "24px" }}
+                            style={{
+                                color: "#fff",
+                                fontSize: "24px",
+                                padding: "5px",
+                                backgroundColor: "#333333",
+                            }}
                         >
                             Меню
                         </Link>
                         <Link
                             to="/about"
-                            style={{ color: "#fff", fontSize: "24px" }}
+                            style={{
+                                color: "#fff",
+                                fontSize: "24px",
+                                padding: "5px",
+                                backgroundColor: "#333333",
+                            }}
                         >
                             О сайте
+                        </Link>
+                        <Link
+                            to="/*"
+                            style={{
+                                color: "#fff",
+                                fontSize: "24px",
+                                padding: "5px",
+                                backgroundColor: "#333333",
+                            }}
+                        >
+                            Логин
+                        </Link>
+                        <Link
+                            to="/*"
+                            style={{
+                                color: "#fff",
+                                fontSize: "24px",
+                                padding: "5px",
+                                backgroundColor: "#333333",
+                            }}
+                        >
+                            Корзина
                         </Link>
                     </div>
                 </Container>

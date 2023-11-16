@@ -4,7 +4,15 @@ import { FormInput } from "./UI/input/FormInput.jsx";
 import { FileInput } from "./UI/input/FileInput.jsx";
 
 export const DishForm = ({ create }) => {
-    const [dish, setDish] = useState({ type: "", name: "", image: null });
+    const [dish, setDish] = useState({
+        type: "",
+        name: "",
+        description: "",
+        weight: "",
+        price: "",
+        image: null,
+    });
+
     const [checker, setChecker] = useState(false);
 
     const addNewDish = (e) => {
@@ -15,7 +23,14 @@ export const DishForm = ({ create }) => {
         };
         create(newDish);
         console.log(newDish);
-        setDish({ type: "", name: "", image: null });
+        setDish({
+            type: "",
+            name: "",
+            description: "",
+            weight: "",
+            price: "",
+            image: null,
+        });
         setChecker(false);
     };
 
@@ -33,6 +48,30 @@ export const DishForm = ({ create }) => {
                     onChange={(e) => setDish({ ...dish, name: e.target.value })}
                     type="input"
                     placeholder="Введите название блюда"
+                />
+                <FormInput
+                    value={dish.description}
+                    onChange={(e) =>
+                        setDish({ ...dish, description: e.target.value })
+                    }
+                    type="input"
+                    placeholder="Введите описание блюда"
+                />
+                <FormInput
+                    value={dish.weight}
+                    onChange={(e) =>
+                        setDish({ ...dish, weight: e.target.value })
+                    }
+                    type="input"
+                    placeholder="Введите вес блюда"
+                />
+                <FormInput
+                    value={dish.price}
+                    onChange={(e) =>
+                        setDish({ ...dish, price: e.target.value })
+                    }
+                    type="input"
+                    placeholder="Введите цену блюда (грн)"
                 />
                 <FileInput
                     accept=".png, .jpg"
