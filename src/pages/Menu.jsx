@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../styles/nullstyle.css";
 import "../styles/style.css";
 import img404 from "../img/img404.png";
@@ -8,8 +8,11 @@ import { DishTypesFilter } from "../components/DishTypesFilter";
 import { Container } from "../components/UI/container/Container";
 import { Modal } from "../components/UI/Modal/Modal";
 import { ExecuteButton } from "../components/UI/button/ExecuteButton";
+import { AuthContext } from "../components/context";
 
 function Menu() {
+    const { login, setLogin } = useContext(AuthContext);
+    console.log(login);
     const [dishes, setDishes] = useState([
         {
             id: Date.now(),
@@ -102,9 +105,11 @@ function Menu() {
         <main className="content">
             <Container>
                 <div className="dish">
-                    <ExecuteButton onClick={() => setModalForm(!modalForm)}>
-                        +Добавить блюдо
-                    </ExecuteButton>
+                    {login == "admin" ? (
+                        <ExecuteButton onClick={() => setModalForm(!modalForm)}>
+                            +Добавить блюдо
+                        </ExecuteButton>
+                    ) : null}
                     <DishTypesFilter
                         set={dishesSet}
                         filter={filter}
