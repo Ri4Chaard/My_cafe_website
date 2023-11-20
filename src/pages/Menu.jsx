@@ -131,6 +131,7 @@ function Menu() {
                             <img
                                 src={URL.createObjectURL(selectedDish.image)}
                                 alt="Image not found"
+                                className="dishModal__item_image"
                             />
                         ) : (
                             <div className="dish__item_not-found">
@@ -144,7 +145,9 @@ function Menu() {
                             {selectedDish.name}
                         </div>
                         <div style={{ fontSize: "16px", fontStyle: "italic" }}>
-                            {`Описание: ${selectedDish.description}`}
+                            {"Описание: "}
+                            <br></br>
+                            {selectedDish.description}
                         </div>
                         <div style={{ fontSize: "16px", fontStyle: "italic" }}>
                             {`Вес: ${selectedDish.weight}`}

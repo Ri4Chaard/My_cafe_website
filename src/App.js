@@ -9,6 +9,7 @@ import { BrowserRouter, Link, Navigate, Route, Routes } from "react-router-dom";
 import Menu from "./pages/Menu";
 import { About } from "./pages/About";
 import { Container } from "./components/UI/container/Container";
+import { Login } from "./pages/Login";
 
 function App() {
     return (
@@ -21,7 +22,6 @@ function App() {
                                 fontSize: "36px",
                                 color: "#fff",
                                 padding: "5px",
-                                backgroundColor: "#333333",
                             }}
                         >
                             LOGO HERE
@@ -32,7 +32,6 @@ function App() {
                                 color: "#fff",
                                 fontSize: "24px",
                                 padding: "5px",
-                                backgroundColor: "#333333",
                             }}
                         >
                             Меню
@@ -43,18 +42,16 @@ function App() {
                                 color: "#fff",
                                 fontSize: "24px",
                                 padding: "5px",
-                                backgroundColor: "#333333",
                             }}
                         >
                             О сайте
                         </Link>
                         <Link
-                            to="/*"
+                            to="/login"
                             style={{
                                 color: "#fff",
                                 fontSize: "24px",
                                 padding: "5px",
-                                backgroundColor: "#333333",
                             }}
                         >
                             Логин
@@ -65,7 +62,6 @@ function App() {
                                 color: "#fff",
                                 fontSize: "24px",
                                 padding: "5px",
-                                backgroundColor: "#333333",
                             }}
                         >
                             Корзина
@@ -76,6 +72,7 @@ function App() {
             <Routes>
                 <Route path="/menu" element={<Menu />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/login" element={<Login />} />
                 <Route path="*" element={<Navigate to="/menu" replace />} />
             </Routes>
             <footer className="footer">
