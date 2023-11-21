@@ -10,7 +10,7 @@ import { Modal } from "../components/UI/Modal/Modal";
 import { ExecuteButton } from "../components/UI/button/ExecuteButton";
 import { AuthContext } from "../components/context";
 
-function Menu() {
+export const Menu = () => {
     const { login, setLogin } = useContext(AuthContext);
     console.log(login);
     const [dishes, setDishes] = useState([
@@ -102,27 +102,25 @@ function Menu() {
     const filteredDishes = filterDishes();
 
     return (
-        <main className="content">
-            <Container>
-                <div className="dish">
-                    {login == "admin" ? (
-                        <ExecuteButton onClick={() => setModalForm(!modalForm)}>
-                            +Добавить блюдо
-                        </ExecuteButton>
-                    ) : null}
-                    <DishTypesFilter
-                        set={dishesSet}
-                        filter={filter}
-                        chooser={chooseDish}
-                    />
-                    <DishList
-                        set={filteredDishes}
-                        items={dishes}
-                        view={viewDish}
-                        remove={removeDish}
-                    />
-                </div>
-            </Container>
+        <Container>
+            <div className="dish">
+                {login == "admin" ? (
+                    <ExecuteButton onClick={() => setModalForm(!modalForm)}>
+                        +Добавить блюдо
+                    </ExecuteButton>
+                ) : null}
+                <DishTypesFilter
+                    set={dishesSet}
+                    filter={filter}
+                    chooser={chooseDish}
+                />
+                <DishList
+                    set={filteredDishes}
+                    items={dishes}
+                    view={viewDish}
+                    remove={removeDish}
+                />
+            </div>
             <Modal visible={modalForm} setVisible={setModalForm}>
                 <DishForm create={createDish} />
             </Modal>
@@ -149,18 +147,33 @@ function Menu() {
                         <div style={{ margin: "0 0 30px 0" }}>
                             {selectedDish.name}
                         </div>
-                        <div style={{ fontSize: "16px", fontStyle: "italic" }}>
+                        <div
+                            style={{
+                                fontSize: "16px",
+                                fontStyle: "italic",
+                            }}
+                        >
                             {"Описание: "}
                             <br></br>
                             {selectedDish.description}
                         </div>
-                        <div style={{ fontSize: "16px", fontStyle: "italic" }}>
+                        <div
+                            style={{
+                                fontSize: "16px",
+                                fontStyle: "italic",
+                            }}
+                        >
                             {`Вес: ${selectedDish.weight}`}
                         </div>
                         <div style={{ fontSize: "24px" }}>
                             {`Цена: ${selectedDish.price} грн`}
                         </div>
-                        <div style={{ fontSize: "24px", alignSelf: "center" }}>
+                        <div
+                            style={{
+                                fontSize: "24px",
+                                alignSelf: "center",
+                            }}
+                        >
                             <ExecuteButton
                                 style={{ backgroundColor: "#FFD700" }}
                             >
@@ -170,8 +183,6 @@ function Menu() {
                     </div>
                 </div>
             </Modal>
-        </main>
+        </Container>
     );
-}
-
-export default Menu;
+};

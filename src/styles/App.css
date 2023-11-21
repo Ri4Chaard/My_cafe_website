@@ -25,6 +25,10 @@ body {
     justify-content: space-between;
 }
 
+.content {
+    flex: 1 1 100%;
+}
+
 .footer {
     /* background-color: rgb(82, 82, 82); */
     background: url(../img/h&f_bg.jpg);

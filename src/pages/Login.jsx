@@ -19,23 +19,21 @@ export const Login = () => {
     };
 
     return (
-        <main className="content">
-            <Container>
-                <form className="login__form">
-                    <FormInput
-                        value={username}
-                        type="input"
-                        placeholder="Логин"
-                        onChange={(e) => {
-                            setUsername(e.target.value);
-                        }}
-                    ></FormInput>
-                    <FormInput type="password" placeholder="Пароль"></FormInput>
-                    <ExecuteButton type="submit" onClick={auth}>
-                        Войти
-                    </ExecuteButton>
-                </form>
-            </Container>
-        </main>
+        <Container>
+            <form className="login__form">
+                <FormInput
+                    value={username}
+                    type="input"
+                    placeholder="Логин"
+                    onChange={(e) => {
+                        setUsername(e.target.value);
+                    }}
+                ></FormInput>
+                <FormInput type="password" placeholder="Пароль"></FormInput>
+                <ExecuteButton type="submit" onClick={auth}>
+                    Войти
+                </ExecuteButton>
+            </form>
+        </Container>
     );
 };

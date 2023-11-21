@@ -11,6 +11,7 @@ import { About } from "./pages/About";
 import { Container } from "./components/UI/container/Container";
 import { Login } from "./pages/Login";
 import { AuthContext } from "./components/context";
+import { AppRouter } from "./components/AppRouter";
 
 function App() {
     const [login, setLogin] = useState("");
@@ -18,7 +19,6 @@ function App() {
     useEffect(() => {
         if (localStorage.getItem("login"))
             setLogin(localStorage.getItem("login"));
-        console.log(login);
     }, []);
 
     const logout = () => {
@@ -84,7 +84,7 @@ function App() {
                                 Корзина
                             </Link>
                             {login ? (
-                                <div style={{ color: "#fff" }}>
+                                <div style={{ color: "#fff", padding: "5px" }}>
                                     <div
                                         style={{
                                             display: "inline-block",
@@ -101,12 +101,9 @@ function App() {
                         </div>
                     </Container>
                 </header>
-                <Routes>
-                    <Route path="/menu" element={<Menu />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="*" element={<Navigate to="/menu" replace />} />
-                </Routes>
+                <main className="content">
+                    <AppRouter />
+                </main>
                 <footer className="footer">
                     <Container>
                         <div className="footer__items"></div>
