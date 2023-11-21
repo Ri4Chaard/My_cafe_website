@@ -12,7 +12,6 @@ import { AuthContext } from "../components/context";
 
 export const Menu = () => {
     const { login, setLogin } = useContext(AuthContext);
-    console.log(login);
     const [dishes, setDishes] = useState([
         {
             id: Date.now(),
