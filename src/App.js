@@ -1,72 +1,116 @@
-import React, { useState } from "react";
-import "./styles/nullstyle.css";
-import "./styles/style.css";
+import React, { useEffect, useState } from "react";
+// import "./styles/nullstyle.css";
+// import "./styles/style.css";
+import "./styles/App.css";
 import { DishList } from "./components/DishList";
 import { DishForm } from "./components/DishForm";
 import { DishTypesFilter } from "./components/DishTypesFilter";
+import { BrowserRouter, Link, Navigate, Route, Routes } from "react-router-dom";
+import Menu from "./pages/Menu";
+import { About } from "./pages/About";
+import { Container } from "./components/UI/container/Container";
+import { Login } from "./pages/Login";
+import { AuthContext } from "./components/context";
+import { AppRouter } from "./components/AppRouter";
 
 function App() {
-    const [dishes, setDishes] = useState([
-        { id: Date.now(), type: "Sushi", name: "Dragon", image: null },
-        { id: Date.now() + 1, type: "Sushi", name: "Japanese", image: null },
-        { id: Date.now() + 2, type: "Pizza", name: "Mozarella", image: null },
-        { id: Date.now() + 3, type: "Borzsh", name: "Zvichainiy", image: null },
-    ]);
-    const [filter, setFilter] = useState("");
-    const [isActiveFilter, setActiveFilter] = useState(false);
+    const [login, setLogin] = useState("");
 
-    const dishesSet = new Set();
-    dishes.map((el) => dishesSet.add(el.type));
+    useEffect(() => {
+        if (localStorage.getItem("login"))
+            setLogin(localStorage.getItem("login"));
+    }, []);
 
-    const createDish = (newDish) => {
-        setDishes([...dishes, newDish]);
-        dishesSet.add(newDish.type);
+    const logout = () => {
+        setLogin("");
+        localStorage.removeItem("login");
     };
-
-    const removeDish = (dish) => {
-        setDishes(dishes.filter((d) => d.id !== dish.id));
-    };
-
-    const chooseDish = (e) => {
-        if (!filter) {
-            setFilter(e.target.value);
-            e.target.scrollIntoView({ inline: "center" });
-            setActiveFilter(!isActiveFilter);
-        }
-        if (e.target.value == filter) {
-            setActiveFilter(!isActiveFilter);
-            setFilter("");
-        } else {
-            setFilter(e.target.value);
-            e.target.scrollIntoView({ inline: "center" });
-        }
-    };
-
-    const filterDishes = () => {
-        if (isActiveFilter) return [filter];
-        else return dishesSet;
-    };
-
-    const filteredDishes = filterDishes();
 
     return (
-        <div className="App">
-            <div className="container">
-                <div className="dish">
-                    <DishForm create={createDish} />
-                    <DishTypesFilter
-                        set={dishesSet}
-                        filter={filter}
-                        chooser={chooseDish}
-                    />
-                    <DishList
-                        set={filteredDishes}
-                        items={dishes}
-                        remove={removeDish}
-                    />
-                </div>
-            </div>
-        </div>
+        <AuthContext.Provider value={{ login, setLogin }}>
+            <BrowserRouter>
+                <header className="header">
+                    <Container>
+                        <div className="header__items">
+                            <div
+                                style={{
+                                    fontSize: "36px",
+                                    color: "#fff",
+                                    padding: "5px",
+                                }}
+                            >
+                                LOGO HERE
+                            </div>
+                            <Link
+                                to="/menu"
+                                style={{
+                                    color: "#fff",
+                                    fontSize: "24px",
+                                    padding: "5px",
+                                }}
+                            >
+                                Меню
+                            </Link>
+                            <Link
+                                to="/about"
+                                style={{
+                                    color: "#fff",
+                                    fontSize: "24px",
+                                    padding: "5px",
+                                }}
+                            >
+                                О сайте
+                            </Link>
+                            {login ? null : (
+                                <Link
+                                    to="/login"
+                                    style={{
+                                        color: "#fff",
+                                        fontSize: "24px",
+                                        padding: "5px",
+                                    }}
+                                >
+                                    Логин
+                                </Link>
+                            )}
+                            <Link
+                                to="/*"
+                                style={{
+                                    color: "#fff",
+                                    fontSize: "24px",
+                                    padding: "5px",
+                                }}
+                            >
+                                Корзина
+                            </Link>
+                            {login ? (
+                                <div style={{ color: "#fff", padding: "5px" }}>
+                                    <div
+                                        style={{
+                                            display: "inline-block",
+                                            margin: "0 10px 0 0",
+                                        }}
+                                    >
+                                        {login == "admin"
+                                            ? "You are admin now 😎"
+                                            : `Hello, ${login}!`}
+                                    </div>
+                                    <button onClick={logout}>Выйти</button>
+                                </div>
+                            ) : null}
+                        </div>
+                    </Container>
+                </header>
+                <main className="content">
+                    <AppRouter />
+                </main>
+                <footer className="footer">
+                    <Container>
+                        <div className="footer__items"></div>
+                    </Container>
+                </footer>
+            </BrowserRouter>
+        </AuthContext.Provider>
     );
 }
 
