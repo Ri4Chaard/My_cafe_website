@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import "./styles/nullstyle.css";
 // import "./styles/style.css";
 import "./styles/App.css";
@@ -14,6 +14,18 @@ import { AuthContext } from "./components/context";
 
 function App() {
     const [login, setLogin] = useState("");
+
+    useEffect(() => {
+        if (localStorage.getItem("login"))
+            setLogin(localStorage.getItem("login"));
+        console.log(login);
+    }, []);
+
+    const logout = () => {
+        setLogin("");
+        localStorage.removeItem("login");
+    };
+
     return (
         <AuthContext.Provider value={{ login, setLogin }}>
             <BrowserRouter>
@@ -83,13 +95,7 @@ function App() {
                                             ? "You are admin now 😎"
                                             : `Hello, ${login}!`}
                                     </div>
-                                    <button
-                                        onClick={() => {
-                                            setLogin(null);
-                                        }}
-                                    >
-                                        Выйти
-                                    </button>
+                                    <button onClick={logout}>Выйти</button>
                                 </div>
                             ) : null}
                         </div>

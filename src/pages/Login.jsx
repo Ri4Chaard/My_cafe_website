@@ -13,6 +13,7 @@ export const Login = () => {
     const auth = (e) => {
         e.preventDefault();
         setLogin(username);
+        localStorage.setItem("login", username);
         setUsername("");
         navigate("/menu");
     };
