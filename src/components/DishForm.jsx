@@ -10,7 +10,7 @@ export const DishForm = ({ create }) => {
         description: "",
         weight: "",
         price: "",
-        image: null,
+        image: {},
     });
 
     const [checker, setChecker] = useState(false);
@@ -29,7 +29,7 @@ export const DishForm = ({ create }) => {
             description: "",
             weight: "",
             price: "",
-            image: null,
+            image: {},
         });
         setChecker(false);
     };
@@ -77,9 +77,8 @@ export const DishForm = ({ create }) => {
                     accept=".png, .jpg"
                     checker={checker}
                     onChange={(e) => {
+                        setChecker(true);
                         setDish({ ...dish, image: e.target.files[0] });
-                        if (e.target.files[0]) setChecker(true);
-                        else setChecker(false);
                     }}
                 >
                     Выбрать картинку

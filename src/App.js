@@ -29,7 +29,7 @@ function App() {
     return (
         <AuthContext.Provider value={{ login, setLogin }}>
             <BrowserRouter>
-                <header className="header">
+                <header>
                     <Container>
                         <div className="header__items">
                             <div
@@ -101,10 +101,10 @@ function App() {
                         </div>
                     </Container>
                 </header>
-                <main className="content">
+                <main>
                     <AppRouter />
                 </main>
-                <footer className="footer">
+                <footer>
                     <Container>
                         <div className="footer__items"></div>
                     </Container>

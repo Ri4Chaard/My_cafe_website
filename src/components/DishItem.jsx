@@ -5,10 +5,11 @@ import { AuthContext } from "./context";
 
 export const DishItem = (props) => {
     const { login } = useContext(AuthContext);
+    console.log(props.el.image);
     return (
         <div className="dish__item">
             {props.el.name}
-            {props.el.image ? (
+            {props.el.image.name ? (
                 <img
                     src={URL.createObjectURL(props.el.image)}
                     alt="Image not found"
