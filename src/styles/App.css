@@ -25,6 +25,37 @@ header {
     justify-content: space-between;
 }
 
+.header__item_logo {
+    color: #fff;
+    font-size: 36px;
+    padding: 5px;
+    flex: 0 1 400px;
+}
+
+.header__item {
+    color: #fff;
+    font-size: 24px;
+    padding: 5px;
+}
+
+.header__user {
+    color: #fff;
+    box-shadow: 0 0 3px #fff;
+    border-radius: 10px;
+}
+.header__username {
+    font-size: 16px;
+    display: inline-block;
+    margin: 0 5px 0 0;
+    padding: 5px;
+}
+.header__btn {
+    font-size: 16px;
+    border: 1px solid #fff;
+    padding: 2px;
+    border-radius: 0 10px 10px 0;
+}
+
 main {
     flex: 1 1 100%;
 }

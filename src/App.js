@@ -12,6 +12,7 @@ import { Container } from "./components/UI/container/Container";
 import { Login } from "./pages/Login";
 import { AuthContext } from "./components/context";
 import { AppRouter } from "./components/AppRouter";
+import { links, loginLinks, publicLinks } from "./links";
 
 function App() {
     const [login, setLogin] = useState("");
@@ -31,74 +32,42 @@ function App() {
             <BrowserRouter>
                 <header>
                     <Container>
-                        <div className="header__items">
-                            <div
-                                style={{
-                                    fontSize: "36px",
-                                    color: "#fff",
-                                    padding: "5px",
-                                }}
-                            >
-                                LOGO HERE
-                            </div>
-                            <Link
-                                to="/menu"
-                                style={{
-                                    color: "#fff",
-                                    fontSize: "24px",
-                                    padding: "5px",
-                                }}
-                            >
-                                Меню
-                            </Link>
-                            <Link
-                                to="/about"
-                                style={{
-                                    color: "#fff",
-                                    fontSize: "24px",
-                                    padding: "5px",
-                                }}
-                            >
-                                О сайте
-                            </Link>
-                            {login ? null : (
-                                <Link
-                                    to="/login"
-                                    style={{
-                                        color: "#fff",
-                                        fontSize: "24px",
-                                        padding: "5px",
-                                    }}
-                                >
-                                    Логин
-                                </Link>
-                            )}
-                            <Link
-                                to="/*"
-                                style={{
-                                    color: "#fff",
-                                    fontSize: "24px",
-                                    padding: "5px",
-                                }}
-                            >
-                                Корзина
-                            </Link>
+                        <nav className="header__items">
+                            <div className="header__item_logo">LOGO</div>
+                            {login
+                                ? loginLinks.map((link) => (
+                                      <Link
+                                          to={link.path}
+                                          className="header__item"
+                                      >
+                                          {link.name}
+                                      </Link>
+                                  ))
+                                : publicLinks.map((link) => (
+                                      <Link
+                                          to={link.path}
+                                          className="header__item"
+                                      >
+                                          {link.name}
+                                      </Link>
+                                  ))}
+
                             {login ? (
-                                <div style={{ color: "#fff", padding: "5px" }}>
-                                    <div
-                                        style={{
-                                            display: "inline-block",
-                                            margin: "0 10px 0 0",
-                                        }}
-                                    >
+                                <div className="header__user">
+                                    <div className="header__username">
                                         {login == "admin"
                                             ? "You are admin now 😎"
                                             : `Hello, ${login}!`}
                                     </div>
-                                    <button onClick={logout}>Выйти</button>
+                                    <button
+                                        className="header__btn"
+                                        onClick={logout}
+                                    >
+                                        Выйти
+                                    </button>
                                 </div>
                             ) : null}
-                        </div>
+                        </nav>
                     </Container>
                 </header>
                 <main>
