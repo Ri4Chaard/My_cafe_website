@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Container } from "../container/Container";
 import classes from "./Navbar.module.css";
@@ -21,8 +21,6 @@ export const Navbar = ({ logout }) => {
         document.body.style.overflow = "auto";
     }
 
-    console.log(login);
-
     return (
         <Container>
             <div className={classes.navItems}>
@@ -34,9 +32,10 @@ export const Navbar = ({ logout }) => {
                             setBurgerMenu(!burgerMenu);
                         }}
                     >
-                        Menu
+                        <span></span>
                     </div>
                 ) : null}
+
                 <nav
                     className={rootClasses.join(" ")}
                     onClick={() => {

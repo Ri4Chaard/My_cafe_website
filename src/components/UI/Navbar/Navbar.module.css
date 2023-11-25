@@ -26,9 +26,39 @@
     display: flex;
     color: #fff;
     font-size: 24px;
-    padding: 5px;
+    margin: 10px 10px 13px;
     justify-content: flex-end;
+    position: relative;
+    height: 25px;
+    width: 50px;
     z-index: 2;
+}
+
+.navBurgerBtn span {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: #fff;
+}
+.navBurgerBtn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: #fff;
+}
+.navBurgerBtn::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: #fff;
 }
 
 .burgerWrapper {

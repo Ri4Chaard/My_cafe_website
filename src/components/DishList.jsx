@@ -4,7 +4,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 export const DishList = ({ set, items, view, remove }) => {
     return (
-        <TransitionGroup>
+        <TransitionGroup component={null}>
             {[...set].map((type) => (
                 <CSSTransition key={type} timeout={500} classNames="list">
                     <div className="dish__list">

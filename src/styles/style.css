@@ -12,7 +12,6 @@
 .dish__filter {
     display: flex;
     max-width: 800px;
-    /* Либо overflow-x: auto */
     overflow-x: hidden;
     box-shadow: 0px 0px 2px #000;
     scroll-behavior: smooth;
@@ -166,7 +165,7 @@
 }
 
 .login__form {
-    margin: 25% auto;
+    margin: 150px auto;
     display: flex;
     flex-direction: column;
     max-width: 500px;
