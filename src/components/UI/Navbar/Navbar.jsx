@@ -4,11 +4,13 @@ import { Container } from "../container/Container";
 import classes from "./Navbar.module.css";
 import { loginLinks, publicLinks } from "../../../links";
 import { AuthContext } from "../../context";
+import { useWindowSize } from "../../../hooks/useWindowSize";
 
 export const Navbar = ({ logout }) => {
     const { login } = useContext(AuthContext);
     const [burgerMenu, setBurgerMenu] = useState(false);
     const rootClasses = [classes.navBurger];
+    const windowWidth = useWindowSize(window.innerWidth);
 
     if (burgerMenu) {
         console.log("worked");
@@ -25,18 +27,20 @@ export const Navbar = ({ logout }) => {
         <Container>
             <div className={classes.navItems}>
                 <div className={classes.navItemLogo}>LOGO</div>
-                <div
-                    className={classes.navBurgerBtn}
-                    onClick={() => {
-                        setBurgerMenu(!burgerMenu);
-                    }}
-                >
-                    Menu
-                </div>
+                {windowWidth <= 1024 ? (
+                    <div
+                        className={classes.navBurgerBtn}
+                        onClick={() => {
+                            setBurgerMenu(!burgerMenu);
+                        }}
+                    >
+                        Menu
+                    </div>
+                ) : null}
                 <nav
                     className={rootClasses.join(" ")}
                     onClick={() => {
-                        setBurgerMenu(!burgerMenu);
+                        if (windowWidth <= 1024) setBurgerMenu(!burgerMenu);
                     }}
                 >
                     <div
@@ -50,7 +54,8 @@ export const Navbar = ({ logout }) => {
                                       to={link.path}
                                       className={classes.navItem}
                                       onClick={() => {
-                                          setBurgerMenu(!burgerMenu);
+                                          if (windowWidth <= 1024)
+                                              setBurgerMenu(!burgerMenu);
                                       }}
                                   >
                                       {link.name}
@@ -62,7 +67,8 @@ export const Navbar = ({ logout }) => {
                                       to={link.path}
                                       className={classes.navItem}
                                       onClick={() => {
-                                          setBurgerMenu(!burgerMenu);
+                                          if (windowWidth <= 1024)
+                                              setBurgerMenu(!burgerMenu);
                                       }}
                                   >
                                       {link.name}
@@ -79,7 +85,8 @@ export const Navbar = ({ logout }) => {
                                 <button
                                     className={classes.navBtn}
                                     onClick={() => {
-                                        setBurgerMenu(!burgerMenu);
+                                        if (windowWidth <= 1024)
+                                            setBurgerMenu(!burgerMenu);
                                         logout();
                                     }}
                                 >

@@ -2,22 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { FilterButton } from "./UI/button/filter_buttons/dish_type_buttons/FilterButton";
 import { ArrowButton } from "./UI/button/filter_buttons/arrow_buttons/ArrowButton";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { useWindowSize } from "../hooks/useWindowSize";
 
 export const DishTypesFilter = ({ set, filter, chooser }) => {
     const [fixButtons, setFixButtons] = useState(false);
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const windowWidth = useWindowSize(window.innerWidth);
     const ref = useRef(0);
-
-    useEffect(() => {
-        function handleWindowResize() {
-            setWindowWidth(window.innerWidth);
-        }
-        window.addEventListener("resize", handleWindowResize);
-        handleWindowResize();
-        return () => {
-            window.removeEventListener("resize", handleWindowResize);
-        };
-    }, []);
 
     useEffect(() => {
         if (ref.current.scrollWidth > ref.current.offsetWidth)

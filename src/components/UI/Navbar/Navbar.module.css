@@ -23,7 +23,12 @@
 }
 
 .navBurgerBtn {
-    display: none;
+    display: flex;
+    color: #fff;
+    font-size: 24px;
+    padding: 5px;
+    justify-content: flex-end;
+    z-index: 2;
 }
 
 .burgerWrapper {
@@ -35,14 +40,6 @@
         flex: 1 1 auto;
     }
 
-    .navBurgerBtn {
-        display: flex;
-        color: #fff;
-        font-size: 24px;
-        padding: 5px;
-        justify-content: flex-end;
-        z-index: 2;
-    }
     .navBurger {
         display: none;
     }
