@@ -3,7 +3,10 @@ import classes from "./Modal.module.css";
 
 export const Modal = ({ children, visible, setVisible }) => {
     const rootClasses = [classes.modal];
-    if (visible) rootClasses.push(classes.active);
+    if (visible) {
+        rootClasses.push(classes.active);
+        document.body.style.overflow = "hidden";
+    } else document.body.style.overflow = "auto";
 
     return (
         <div

@@ -1,0 +1,111 @@
+.navItems {
+    display: flex;
+    height: 50px;
+    align-items: center;
+}
+
+.navItemLogo {
+    color: #fff;
+    font-size: 36px;
+    padding: 5px;
+    flex: 0 1 400px;
+}
+
+.navBurger {
+    flex: 1 1 auto;
+}
+
+.navMenu {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navBurgerBtn {
+    display: none;
+}
+
+.burgerWrapper {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    .navItemLogo {
+        flex: 1 1 auto;
+    }
+
+    .navBurgerBtn {
+        display: flex;
+        color: #fff;
+        font-size: 24px;
+        padding: 5px;
+        justify-content: flex-end;
+        z-index: 2;
+    }
+    .navBurger {
+        display: none;
+    }
+    .navBurger.active {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+    }
+    .navMenu {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        width: 250px;
+        height: 75%;
+        top: 0;
+        right: 0;
+        align-items: center;
+        justify-content: space-around;
+        background: #000;
+    }
+}
+
+.navItem {
+    color: #fff;
+    font-size: 24px;
+    padding: 5px;
+}
+
+.navUser {
+    color: #fff;
+    box-shadow: 0 0 3px #fff;
+    border-radius: 10px;
+}
+.navUsername {
+    font-size: 16px;
+    display: inline-block;
+    margin: 0 5px 0 0;
+    padding: 5px;
+}
+.navBtn {
+    font-size: 16px;
+    border: 1px solid #fff;
+    padding: 2px;
+    border-radius: 0 10px 10px 0;
+}
+@media (max-width: 1024px) {
+    .navUser {
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+        padding: 10px;
+        font-size: 24px;
+    }
+    .navUsername {
+        font-size: 18px;
+    }
+    .navBtn {
+        font-size: 18px;
+        border-radius: 10px;
+    }
+}

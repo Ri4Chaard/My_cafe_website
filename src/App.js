@@ -13,6 +13,7 @@ import { Login } from "./pages/Login";
 import { AuthContext } from "./components/context";
 import { AppRouter } from "./components/AppRouter";
 import { links, loginLinks, publicLinks } from "./links";
+import { Navbar } from "./components/UI/Navbar/Navbar";
 
 function App() {
     const [login, setLogin] = useState("");
@@ -31,44 +32,7 @@ function App() {
         <AuthContext.Provider value={{ login, setLogin }}>
             <BrowserRouter>
                 <header>
-                    <Container>
-                        <nav className="header__items">
-                            <div className="header__item_logo">LOGO</div>
-                            {login
-                                ? loginLinks.map((link) => (
-                                      <Link
-                                          to={link.path}
-                                          className="header__item"
-                                      >
-                                          {link.name}
-                                      </Link>
-                                  ))
-                                : publicLinks.map((link) => (
-                                      <Link
-                                          to={link.path}
-                                          className="header__item"
-                                      >
-                                          {link.name}
-                                      </Link>
-                                  ))}
-
-                            {login ? (
-                                <div className="header__user">
-                                    <div className="header__username">
-                                        {login == "admin"
-                                            ? "You are admin now 😎"
-                                            : `Hello, ${login}!`}
-                                    </div>
-                                    <button
-                                        className="header__btn"
-                                        onClick={logout}
-                                    >
-                                        Выйти
-                                    </button>
-                                </div>
-                            ) : null}
-                        </nav>
-                    </Container>
+                    <Navbar logout={logout} />
                 </header>
                 <main>
                     <AppRouter />
