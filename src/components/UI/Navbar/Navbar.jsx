@@ -13,9 +13,7 @@ export const Navbar = ({ logout }) => {
     const windowWidth = useWindowSize(window.innerWidth);
 
     if (burgerMenu) {
-        console.log("worked");
         rootClasses.push(classes.active);
-        console.log(rootClasses);
         document.body.style.overflow = "hidden";
     } else {
         document.body.style.overflow = "auto";
@@ -24,7 +22,7 @@ export const Navbar = ({ logout }) => {
     return (
         <Container>
             <div className={classes.navItems}>
-                <div className={classes.navItemLogo}>LOGO</div>
+                <div className={classes.navItemLogo}>ЛОГО</div>
                 {windowWidth <= 1024 ? (
                     <div
                         className={classes.navBurgerBtn}
@@ -78,8 +76,8 @@ export const Navbar = ({ logout }) => {
                             <div className={classes.navUser}>
                                 <div className={classes.navUsername}>
                                     {login == "admin"
-                                        ? "You are admin now 😎"
-                                        : `Hello, ${login}!`}
+                                        ? "Ви тепер адмін 😎"
+                                        : `Привіт, ${login}!`}
                                 </div>
                                 <button
                                     className={classes.navBtn}
@@ -89,7 +87,7 @@ export const Navbar = ({ logout }) => {
                                         logout();
                                     }}
                                 >
-                                    Выйти
+                                    Вийти
                                 </button>
                             </div>
                         ) : null}

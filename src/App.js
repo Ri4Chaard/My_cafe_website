@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import "./styles/nullstyle.css";
-// import "./styles/style.css";
 import "./styles/App.css";
 import { BrowserRouter } from "react-router-dom";
 import { Container } from "./components/UI/container/Container";
@@ -33,7 +31,7 @@ function App() {
                 <footer>
                     <Container>
                         <div className="footer__items">
-                            <div className="footer__item">Мой тг: @Ri4Aard</div>
+                            <div className="footer__item">Мій тг: @Ri4Aard</div>
                             <div className="footer__item">
                                 6.04.122.010.20.01 😎
                             </div>

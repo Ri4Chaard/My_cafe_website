@@ -22,7 +22,6 @@ export const DishForm = ({ create }) => {
             id: Date.now(),
         };
         create(newDish);
-        console.log(newDish);
         setDish({
             type: "",
             name: "",
@@ -41,13 +40,13 @@ export const DishForm = ({ create }) => {
                     value={dish.type}
                     onChange={(e) => setDish({ ...dish, type: e.target.value })}
                     type="input"
-                    placeholder="Введите блюдо"
+                    placeholder="Введіть страву"
                 />
                 <FormInput
                     value={dish.name}
                     onChange={(e) => setDish({ ...dish, name: e.target.value })}
                     type="input"
-                    placeholder="Введите название блюда"
+                    placeholder="Введіть назву страви"
                 />
                 <FormInput
                     value={dish.description}
@@ -55,7 +54,7 @@ export const DishForm = ({ create }) => {
                         setDish({ ...dish, description: e.target.value })
                     }
                     type="input"
-                    placeholder="Введите описание блюда"
+                    placeholder="Введіть опис страви"
                 />
                 <FormInput
                     value={dish.weight}
@@ -63,7 +62,7 @@ export const DishForm = ({ create }) => {
                         setDish({ ...dish, weight: e.target.value })
                     }
                     type="input"
-                    placeholder="Введите вес блюда"
+                    placeholder="Введіть вагу страви"
                 />
                 <FormInput
                     value={dish.price}
@@ -71,7 +70,7 @@ export const DishForm = ({ create }) => {
                         setDish({ ...dish, price: e.target.value })
                     }
                     type="input"
-                    placeholder="Введите цену блюда (грн)"
+                    placeholder="Введіть ціну страви (грн)"
                 />
                 <FileInput
                     accept=".png, .jpg"
@@ -81,10 +80,10 @@ export const DishForm = ({ create }) => {
                         setDish({ ...dish, image: e.target.files[0] });
                     }}
                 >
-                    Выбрать картинку
+                    Обрати світлину
                 </FileInput>
                 <ExecuteButton type="submit" onClick={addNewDish}>
-                    Добавить
+                    Додати
                 </ExecuteButton>
             </form>
         </div>

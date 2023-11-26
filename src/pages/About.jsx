@@ -13,7 +13,7 @@ export const About = () => {
                     textAlign: "center",
                 }}
             >
-                This is my first react project
+                Це мій перший проєкт на реакті
             </div>
         </Container>
     );

@@ -5,7 +5,6 @@ import { AuthContext } from "./context";
 
 export const DishItem = (props) => {
     const { login } = useContext(AuthContext);
-    console.log(props.el.image);
     return (
         <div className="dish__item">
             {props.el.name}
@@ -21,11 +20,11 @@ export const DishItem = (props) => {
                 </div>
             )}
             <ExecuteButton onClick={() => props.view(props.el)}>
-                Просмотреть
+                Переглянути
             </ExecuteButton>
             {login == "admin" ? (
                 <ExecuteButton onClick={() => props.remove(props.el)}>
-                    Удалить
+                    Видалити
                 </ExecuteButton>
             ) : null}
         </div>

@@ -10,6 +10,10 @@
     background-color: #fff;
 }
 
+.fileInp span {
+    margin: 0 0 0 10px;
+}
+
 .fileInp:hover {
     background-color: #f5f5f5;
 }

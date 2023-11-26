@@ -182,6 +182,7 @@
 .dishModal__item_image {
     flex: 1 0 auto;
     object-fit: contain;
+    max-width: 400px;
 }
 
 .dishModal__item_price {

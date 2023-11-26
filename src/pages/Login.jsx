@@ -24,14 +24,14 @@ export const Login = () => {
                 <FormInput
                     value={username}
                     type="input"
-                    placeholder="Логин"
+                    placeholder="Логін"
                     onChange={(e) => {
                         setUsername(e.target.value);
                     }}
                 ></FormInput>
                 <FormInput type="password" placeholder="Пароль"></FormInput>
                 <ExecuteButton type="submit" onClick={auth}>
-                    Войти
+                    Увійти
                 </ExecuteButton>
             </form>
         </Container>

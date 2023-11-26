@@ -24,19 +24,21 @@ export const DishMoreInfo = ({ dish }) => {
             <div className="dishModal__item">
                 <div className="dishModal__item_name">{dish.name}</div>
                 <div className="dishModal__item_description">
-                    {"Описание: "}
+                    {"Опис: "}
                     <br></br>
                     {dish.description}
                 </div>
                 <div className="dishModal__item_description">
-                    {`Вес: ${dish.weight}`}
+                    {`Вага: ${dish.weight}`}
                 </div>
                 <div className="dishModal__item_price">
-                    {`Цена: ${dish.price} грн`}
+                    {`Ціна: ${dish.price} грн`}
                 </div>
                 <div className="dishModal__item_btn">
                     <ExecuteButton style={{ backgroundColor: "#FFD700" }}>
-                        {`Добавить к заказу за ${dish.price} грн`}
+                        {`Додати до замовлення`}
+                        <br />
+                        {`за ${dish.price} грн`}
                     </ExecuteButton>
                 </div>
             </div>

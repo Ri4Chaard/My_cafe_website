@@ -15,10 +15,10 @@ export const FileInput = ({ children, accept, onChange, checker }) => {
                 />
                 {checker ? (
                     <span style={{ color: "green" }}>
-                        Картинка успешно загружена
+                        Світлина успішно завантажена
                     </span>
                 ) : (
-                    <span style={{ color: "red" }}>Картинка не выбрана</span>
+                    <span style={{ color: "red" }}>Світлина не обрана</span>
                 )}
             </label>
         </div>

@@ -27,7 +27,7 @@ export const Modal = ({ children, visible, setVisible }) => {
                             setVisible(!visible);
                         }}
                     >
-                        Закрыть
+                        Закрити
                     </div>
                 ) : null}
             </div>

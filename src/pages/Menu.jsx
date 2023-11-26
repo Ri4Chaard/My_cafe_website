@@ -29,8 +29,6 @@ export const Menu = () => {
         localStorage.setItem("products", JSON.stringify([...dishes]));
     }, [dishes]);
 
-    console.log(dishes);
-
     const dishesSet = new Set();
     dishes.map((el) => dishesSet.add(el.type));
 
@@ -70,14 +68,12 @@ export const Menu = () => {
 
     const filteredDishes = filterDishes();
 
-    console.log(selectedDish);
-
     return (
         <Container>
             <div className="dish">
                 {login == "admin" ? (
                     <ExecuteButton onClick={() => setModalForm(!modalForm)}>
-                        +Добавить блюдо
+                        +Додати страву
                     </ExecuteButton>
                 ) : null}
                 {dishes ? (
@@ -102,7 +98,7 @@ export const Menu = () => {
                             textAlign: "center",
                         }}
                     >
-                        На данный момент список пуст
+                        На даний момент список порожній
                     </div>
                 )}
             </div>
