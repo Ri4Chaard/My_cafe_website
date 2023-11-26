@@ -9,6 +9,7 @@ import { Container } from "../components/UI/container/Container";
 import { Modal } from "../components/UI/Modal/Modal";
 import { ExecuteButton } from "../components/UI/button/ExecuteButton";
 import { AuthContext } from "../components/context";
+import { DishMoreInfo } from "../components/DishMoreInfo";
 
 export const Menu = () => {
     const { login, setLogin } = useContext(AuthContext);
@@ -110,65 +111,7 @@ export const Menu = () => {
             </Modal>
             {modalDish ? (
                 <Modal visible={modalDish} setVisible={setModalDish}>
-                    <div className="dishModal">
-                        <div className="dishModal__item">
-                            <h1 style={{ margin: "0 0 20px 0" }}>
-                                {selectedDish.type}
-                            </h1>
-                            {selectedDish.image.name ? (
-                                <img
-                                    src={URL.createObjectURL(
-                                        selectedDish.image
-                                    )}
-                                    alt="Image not found"
-                                    className="dishModal__item_image"
-                                />
-                            ) : (
-                                <div className="dish__item_not-found">
-                                    <img src={img404} alt="Image not found" />
-                                    <span>Image not found</span>
-                                </div>
-                            )}
-                        </div>
-                        <div className="dishModal__item">
-                            <div style={{ margin: "0 0 30px 0" }}>
-                                {selectedDish.name}
-                            </div>
-                            <div
-                                style={{
-                                    fontSize: "16px",
-                                    fontStyle: "italic",
-                                }}
-                            >
-                                {"Описание: "}
-                                <br></br>
-                                {selectedDish.description}
-                            </div>
-                            <div
-                                style={{
-                                    fontSize: "16px",
-                                    fontStyle: "italic",
-                                }}
-                            >
-                                {`Вес: ${selectedDish.weight}`}
-                            </div>
-                            <div style={{ fontSize: "24px" }}>
-                                {`Цена: ${selectedDish.price} грн`}
-                            </div>
-                            <div
-                                style={{
-                                    fontSize: "24px",
-                                    alignSelf: "center",
-                                }}
-                            >
-                                <ExecuteButton
-                                    style={{ backgroundColor: "#FFD700" }}
-                                >
-                                    {`Добавить к заказу за ${selectedDish.price} грн`}
-                                </ExecuteButton>
-                            </div>
-                        </div>
-                    </div>
+                    <DishMoreInfo dish={selectedDish} />
                 </Modal>
             ) : null}
         </Container>

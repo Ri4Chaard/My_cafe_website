@@ -2,17 +2,10 @@ import React, { useEffect, useState } from "react";
 // import "./styles/nullstyle.css";
 // import "./styles/style.css";
 import "./styles/App.css";
-import { DishList } from "./components/DishList";
-import { DishForm } from "./components/DishForm";
-import { DishTypesFilter } from "./components/DishTypesFilter";
-import { BrowserRouter, Link, Navigate, Route, Routes } from "react-router-dom";
-import Menu from "./pages/Menu";
-import { About } from "./pages/About";
+import { BrowserRouter } from "react-router-dom";
 import { Container } from "./components/UI/container/Container";
-import { Login } from "./pages/Login";
 import { AuthContext } from "./components/context";
 import { AppRouter } from "./components/AppRouter";
-import { links, loginLinks, publicLinks } from "./links";
 import { Navbar } from "./components/UI/Navbar/Navbar";
 
 function App() {
@@ -39,7 +32,12 @@ function App() {
                 </main>
                 <footer>
                     <Container>
-                        <div className="footer__items"></div>
+                        <div className="footer__items">
+                            <div className="footer__item">Мой тг: @Ri4Aard</div>
+                            <div className="footer__item">
+                                6.04.122.010.20.01 😎
+                            </div>
+                        </div>
                     </Container>
                 </footer>
             </BrowserRouter>

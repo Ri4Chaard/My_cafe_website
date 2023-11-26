@@ -6,6 +6,7 @@
     left: 0;
     display: none;
     background: rgba(0, 0, 0, 0.5);
+    z-index: 5;
 }
 
 .modal.active {
@@ -15,8 +16,25 @@
 }
 
 .modalContent {
+    position: relative;
     padding: 25px;
     background: #fff;
-    background-repeat: 16px;
-    min-width: 500px;
+}
+
+.modalCloseBtn {
+    position: absolute;
+    font-size: 18px;
+    top: 10px;
+    right: 10px;
+    font-weight: bold;
+}
+
+@media (max-width: 425px) {
+    .modalContent {
+        width: 100vw;
+        height: 100vh;
+    }
+    .modalContent {
+        padding: 0;
+    }
 }

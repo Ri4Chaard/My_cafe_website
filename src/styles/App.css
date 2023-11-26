@@ -1,5 +1,4 @@
 body {
-    /* font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; */
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     background: url(../img/body_bg.jpg) repeat;
 }
@@ -12,9 +11,7 @@ body {
 }
 
 header {
-    /* background-color: rgb(82, 82, 82); */
     background-color: #333333;
-    /* background: url(../img/h&f_bg.jpg); */
     background-size: 250px;
 }
 
@@ -61,7 +58,6 @@ main {
 }
 
 footer {
-    /* background-color: rgb(82, 82, 82); */
     background: url(../img/h&f_bg.jpg);
     background-size: 250px;
 }
@@ -69,4 +65,21 @@ footer {
 .footer__items {
     display: flex;
     height: 100px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer__item {
+    color: #000;
+    font-size: 18px;
+    font-weight: "bold";
+    background-color: #fff;
+    padding: 5px;
+}
+
+@media (max-width: 500px) {
+    .footer__items {
+        flex-direction: column;
+        justify-content: space-around;
+    }
 }
